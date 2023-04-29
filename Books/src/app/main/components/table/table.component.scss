@@ -1,0 +1,21 @@
+.table-container{
+
+  ::ng-deep tbody{
+    text-align: center;
+  }
+
+  ::ng-deep thead th {
+    background-color: #1890ff;
+    color :white;
+    font-size: 1.25rem;
+  }
+
+
+  .table-actions {
+    padding: 2rem 0rem 2rem 2rem;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+

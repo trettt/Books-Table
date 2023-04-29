@@ -1,0 +1,38 @@
+<div class="table-container">
+  <div class="table-actions">
+    <button nz-button nzType="primary">Add New Book</button>
+  </div>
+
+  <nz-table #basicTable [nzData]="books" [nzPageSize]="8" [nzBordered]="true">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Rating</th>
+        <th>Read</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.author }}</td>
+        <td>{{ data.numberOfPages }}</td>
+        <td>{{ data.rating +" / 5" }}
+          <span nz-icon nzType="star" nzTheme="outline"></span>
+        </td>
+        <td>
+          <span
+            nz-icon
+            [nzType]="data.isRead === true ? 'check' : 'close'"
+            nzTheme="outline"
+          ></span>
+        </td>
+        <td>
+          <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

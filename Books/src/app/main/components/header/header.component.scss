@@ -1,0 +1,14 @@
+.header-container{
+  display: flex;
+  flex-direction: column;
+
+  nz-page-header-title{
+    font-size: 5vh;
+    padding-bottom: 10px;
+  }
+
+  nz-page-header-subtitle{
+    font-size: 2vh;
+    padding-left: 5px;
+  }
+}
