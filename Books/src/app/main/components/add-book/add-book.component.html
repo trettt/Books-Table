@@ -1,0 +1,62 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Add a book"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <form nz-form class="login-form">
+      <nz-form-item>
+        <nz-input-group>
+          <input
+            type="text"
+            nz-input
+            formControlName="bookName"
+            placeholder="Name"
+          />
+        </nz-input-group>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <input
+            type="text"
+            nz-input
+            formControlName="bookAuthor"
+            placeholder="Author"
+          />
+        </nz-input-group>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <input
+            type="number"
+            nz-input
+            formControlName="bookPages"
+            placeholder="Number of pages"
+          />
+        </nz-input-group>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <input type="checkbox" nz-input
+          formControlName="bookRead"/> I read this book!!
+        </nz-input-group>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <input
+            type="number"
+            nz-input
+            formControlName="bookRating"
+            placeholder="Rating"
+          />
+        </nz-input-group>
+      </nz-form-item>
+
+    </form>
+  </ng-container>
+</nz-modal>

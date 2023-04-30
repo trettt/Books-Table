@@ -1,6 +1,9 @@
 <div class="table-container">
   <div class="table-actions">
-    <button nz-button nzType="primary">Add New Book</button>
+    <button nz-button nzType="primary" (click)="showModal()">Add New Book</button>
+
+    <app-add-book [isVisible]="isVisible"></app-add-book>
+
   </div>
 
   <nz-table #basicTable [nzData]="books" [nzPageSize]="8" [nzBordered]="true">
