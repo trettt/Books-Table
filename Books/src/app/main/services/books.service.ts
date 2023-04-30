@@ -75,4 +75,8 @@ export class BooksService {
   getBooks(): Book[] {
     return this.books;
   }
+
+  addBook(book:Book):void{
+    this.books.push(book);
+  }
 }
