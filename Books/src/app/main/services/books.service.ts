@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../interfaces/book';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -69,6 +70,7 @@ export class BooksService {
       isRead: true,
     },
   ];
+  booksSubject = new Subject<Book[]>();
 
   constructor() {}
 
@@ -76,7 +78,8 @@ export class BooksService {
     return this.books;
   }
 
-  addBook(book:Book):void{
+  addBook(book: Book) {
     this.books.push(book);
+    this.booksSubject.next(this.books);
   }
 }

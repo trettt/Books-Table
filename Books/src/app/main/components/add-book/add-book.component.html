@@ -3,18 +3,21 @@
   nzTitle="Add a book"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
+  [nzOkDisabled]="!addBookForm.valid"
 >
   <ng-container *nzModalContent>
-    <form nz-form class="login-form">
+    <form nz-form class="login-form" [formGroup]="addBookForm">
       <nz-form-item>
-        <nz-input-group>
-          <input
-            type="text"
-            nz-input
-            formControlName="bookName"
-            placeholder="Name"
-          />
-        </nz-input-group>
+        <nz-form-control nzErrorTip="Please input your email!">
+          <nz-input-group>
+            <input
+              type="text"
+              nz-input
+              formControlName="name"
+              placeholder="Name"
+            />
+          </nz-input-group>
+        </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
@@ -22,7 +25,7 @@
           <input
             type="text"
             nz-input
-            formControlName="bookAuthor"
+            formControlName="author"
             placeholder="Author"
           />
         </nz-input-group>
@@ -33,7 +36,7 @@
           <input
             type="number"
             nz-input
-            formControlName="bookPages"
+            formControlName="numberOfPages"
             placeholder="Number of pages"
           />
         </nz-input-group>
@@ -41,22 +44,21 @@
 
       <nz-form-item>
         <nz-input-group>
-          <input type="checkbox" nz-input
-          formControlName="bookRead"/> I read this book!!
+          <input type="checkbox" nz-input formControlName="isRead" /> I read
+          this book!!
         </nz-input-group>
       </nz-form-item>
 
-      <nz-form-item>
+      <nz-form-item *ngIf="isRead.value==true">
         <nz-input-group>
           <input
             type="number"
             nz-input
-            formControlName="bookRating"
+            formControlName="rating"
             placeholder="Rating"
           />
         </nz-input-group>
       </nz-form-item>
-
     </form>
   </ng-container>
 </nz-modal>
