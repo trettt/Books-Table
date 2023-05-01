@@ -15,19 +15,15 @@ export class TableComponent implements OnInit {
   constructor(private booksService: BooksService,
     private route:ActivatedRoute,
     private router:Router) {
-      this.route.queryParams.subscribe((res)=>{
-        console.log(res);
-      });
+      this.route.queryParams.subscribe();
       this.booksService.booksSubject.subscribe((res)=>{
         this.books=[...res];
-        console.log("in subscribe");
       })
     }
 
 
   ngOnInit(): void {
    this.books=this.booksService.getBooks();
-   console.log(this.books);
   }
 
   editBook(book:Book){

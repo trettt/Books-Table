@@ -12,8 +12,8 @@
         <th>Name</th>
         <th>Author</th>
         <th>Pages</th>
-        <th>Rating</th>
         <th>Read</th>
+        <th>Rating</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -23,15 +23,15 @@
         <td>{{ data.name }}</td>
         <td>{{ data.author }}</td>
         <td>{{ data.numberOfPages }}</td>
-        <td>{{ data.rating +" / 5" }}
-          <span nz-icon nzType="star" nzTheme="outline"></span>
-        </td>
         <td>
           <span
-            nz-icon
-            [nzType]="data.isRead === true ? 'check' : 'close'"
-            nzTheme="outline"
+          nz-icon
+          [nzType]="data.isRead === true ? 'check' : 'close'"
+          nzTheme="outline"
           ></span>
+        </td>
+        <td>{{ data.rating +" / 5" }}
+          <span nz-icon nzType="star" nzTheme="outline"></span>
         </td>
         <td>
           <span class="edit-button" nz-icon nzType="edit" nzTheme="outline" (click)="editBook(data)" ></span>
