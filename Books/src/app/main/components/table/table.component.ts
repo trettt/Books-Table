@@ -25,11 +25,16 @@ export class TableComponent implements OnInit {
     }
 
 
-
-
-
   ngOnInit(): void {
    this.books=this.booksService.getBooks();
    console.log(this.books);
+  }
+
+  editBook(book:Book){
+      console.log(book);
+  }
+
+  deleteBook(book:Book){
+    this.booksService.deleteBook(book);
   }
 }

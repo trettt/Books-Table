@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../interfaces/book';
-import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -80,6 +80,13 @@ export class BooksService {
 
   addBook(book: Book) {
     this.books.push(book);
+    this.booksSubject.next(this.books);
+  }
+
+  deleteBook(book: Book) {
+    const index = this.books.findIndex(b => b === book);
+    this.books.splice(index, 1);
+
     this.booksSubject.next(this.books);
   }
 }

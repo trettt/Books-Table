@@ -17,5 +17,9 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .edit-button, .delete-button{
+    cursor: pointer;
+  }
 }
 

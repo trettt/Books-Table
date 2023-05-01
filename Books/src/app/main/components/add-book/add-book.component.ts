@@ -58,7 +58,6 @@ export class AddBookComponent implements OnInit {
     const newBook: Book = this.addBookForm.value as Book;
     this.booksService.addBook(newBook);
 
-    console.log(this.addBookForm.value as Book);
     this.addBookForm.reset();
 
     this.isVisibleChange.emit(false);
