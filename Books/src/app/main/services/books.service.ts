@@ -18,7 +18,7 @@ export class BooksService {
       name: 'Noi contra voastra',
       author: 'Fredrik Backman',
       numberOfPages: 540,
-      rating: "?",
+      rating: '?',
       isRead: false,
     },
     {
@@ -147,6 +147,13 @@ export class BooksService {
   deleteBook(book: Book) {
     const index = this.books.findIndex((b) => b === book);
     this.books.splice(index, 1);
+
+    this.booksSubject.next(this.books);
+  }
+
+  editBook(book: Book, editedBook: Book) {
+    const index = this.books.findIndex((b) => b === book);
+    this.books.splice(index, 1, editedBook);
 
     this.booksSubject.next(this.books);
   }

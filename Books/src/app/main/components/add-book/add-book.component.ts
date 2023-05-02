@@ -14,8 +14,8 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
   styleUrls: ['./add-book.component.scss'],
 })
 export class AddBookComponent implements OnInit {
-  @Input() isVisible = false;
-  @Output() isVisibleChange = new EventEmitter<boolean>();
+  @Input() addVisible = false;
+  @Output() addVisibleChange = new EventEmitter<boolean>();
 
   addBookForm!: FormGroup;
 
@@ -60,12 +60,12 @@ export class AddBookComponent implements OnInit {
 
     this.addBookForm.reset();
 
-    this.isVisibleChange.emit(false);
+    this.addVisibleChange.emit(false);
   }
 
 
   handleCancel(): void {
     this.addBookForm.reset();
-    this.isVisibleChange.emit(false);
+    this.addVisibleChange.emit(false);
   }
 }

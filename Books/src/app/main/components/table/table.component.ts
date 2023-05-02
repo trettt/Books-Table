@@ -10,7 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TableComponent implements OnInit {
   books: Book[] = [];
-  isVisible = false;
+  addVisible = false;
+  editVisible = false;
+
+  bookToEdit?:Book;
 
   constructor(private booksService: BooksService,
     private route:ActivatedRoute,
@@ -27,7 +30,8 @@ export class TableComponent implements OnInit {
   }
 
   editBook(book:Book){
-      console.log(book);
+      this.bookToEdit=book;
+      this.editVisible=true;
   }
 
   deleteBook(book:Book){

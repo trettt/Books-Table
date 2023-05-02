@@ -1,9 +1,10 @@
 <div class="table-container">
   <div class="table-actions">
-    <button nz-button nzType="primary" (click)="isVisible=true">Add New Book</button>
+    <button nz-button nzType="primary" (click)="addVisible = true">
+      Add New Book
+    </button>
 
-    <app-add-book [(isVisible)]="isVisible"></app-add-book>
-
+    <app-add-book [(addVisible)]="addVisible"></app-add-book>
   </div>
 
   <nz-table #basicTable [nzData]="books" [nzPageSize]="8" [nzBordered]="true">
@@ -18,26 +19,40 @@
         <th>Delete</th>
       </tr>
     </thead>
-    <tbody >
+    <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td>{{ data.name }}</td>
         <td>{{ data.author }}</td>
         <td>{{ data.numberOfPages }}</td>
         <td>
           <span
-          nz-icon
-          [nzType]="data.isRead === true ? 'check' : 'close'"
-          nzTheme="outline"
+            nz-icon
+            [nzType]="data.isRead === true ? 'check' : 'close'"
+            nzTheme="outline"
           ></span>
         </td>
-        <td>{{ data.rating +" / 5" }}
+        <td>
+          {{ data.rating + " / 5" }}
           <span nz-icon nzType="star" nzTheme="outline"></span>
         </td>
         <td>
-          <span class="edit-button" nz-icon nzType="edit" nzTheme="outline" (click)="editBook(data)" ></span>
+          <span
+            class="edit-button"
+            nz-icon
+            nzType="edit"
+            nzTheme="outline"
+            (click)="editBook(data)"
+          ></span>
+          <app-edit-book *ngIf="editVisible==true" [(editVisible)]="editVisible" [bookToEdit]="bookToEdit" ></app-edit-book>
         </td>
         <td>
-          <span class="delete-button" nz-icon nzType="delete" nzTheme="outline" (click)="deleteBook(data)"></span>
+          <span
+            class="delete-button"
+            nz-icon
+            nzType="delete"
+            nzTheme="outline"
+            (click)="deleteBook(data)"
+          ></span>
         </td>
       </tr>
     </tbody>
