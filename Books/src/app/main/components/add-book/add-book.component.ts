@@ -6,7 +6,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-book',
@@ -35,7 +34,6 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-
   get name(): FormControl {
     return this.addBookForm.get('name') as FormControl;
   }
@@ -52,8 +50,6 @@ export class AddBookComponent implements OnInit {
     return this.addBookForm.get('rating') as FormControl;
   }
 
-
-
   handleOk(): void {
     const newBook: Book = this.addBookForm.value as Book;
     this.booksService.addBook(newBook);
@@ -62,7 +58,6 @@ export class AddBookComponent implements OnInit {
 
     this.addVisibleChange.emit(false);
   }
-
 
   handleCancel(): void {
     this.addBookForm.reset();

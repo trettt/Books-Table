@@ -24,7 +24,6 @@ export class TableComponent implements OnInit {
       })
     }
 
-
   ngOnInit(): void {
    this.books=this.booksService.getBooks();
   }

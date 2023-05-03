@@ -10,9 +10,9 @@ import { Book } from '../../interfaces/book';
 })
 export class EditBookComponent implements OnInit {
   @Input() editVisible = false;
-  @Output() editVisibleChange = new EventEmitter<boolean>();
-
   @Input() bookToEdit?:Book;
+
+  @Output() editVisibleChange = new EventEmitter<boolean>();
 
   editBookForm!: FormGroup;
 
@@ -21,8 +21,6 @@ export class EditBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-
-
   }
 
   initializeForm(){
@@ -34,7 +32,6 @@ export class EditBookComponent implements OnInit {
       rating: new FormControl(this.bookToEdit?.rating),
     });
   }
-
 
   get name(): FormControl {
     return this.editBookForm.get('name') as FormControl;
@@ -52,19 +49,18 @@ export class EditBookComponent implements OnInit {
     return this.editBookForm.get('rating') as FormControl;
   }
 
-
   handleOk(): void {
     const editedBook: Book = this.editBookForm.value as Book;
-    if (this.bookToEdit) { 
+    if (editedBook.isRead===false){
+      editedBook.rating='?';
+    }
+
+    if (this.bookToEdit) {
       this.booksService.editBook(this.bookToEdit, editedBook);
     }
 
-    this.editBookForm.reset();
-
     this.editVisibleChange.emit(false);
   }
-
-
 
   handleCancel(): void {
     this.editVisibleChange.emit(false);
