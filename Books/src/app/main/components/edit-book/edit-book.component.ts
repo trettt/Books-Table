@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BooksService } from '../../services/books.service';
 import { Book } from '../../interfaces/book';
+import { CustomValidators } from '../../helpers/custom-validators';
 
 @Component({
   selector: 'app-edit-book',
@@ -27,9 +28,9 @@ export class EditBookComponent implements OnInit {
     this.editBookForm = new FormGroup({
       name: new FormControl(this.bookToEdit?.name, [Validators.required]),
       author: new FormControl(this.bookToEdit?.author, [Validators.required]),
-      numberOfPages: new FormControl(this.bookToEdit?.numberOfPages, [Validators.required]),
+      numberOfPages: new FormControl(this.bookToEdit?.numberOfPages, [Validators.required, CustomValidators.numberOfPagesValidator]),
       isRead: new FormControl(this.bookToEdit?.isRead),
-      rating: new FormControl(this.bookToEdit?.rating),
+      rating: new FormControl(this.bookToEdit?.rating, [CustomValidators.ratingValidator, Validators.required]),
     });
   }
 

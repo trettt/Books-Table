@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { CustomValidators } from '../../helpers/custom-validators';
 
 @Component({
   selector: 'app-add-book',
@@ -28,9 +29,9 @@ export class AddBookComponent implements OnInit {
     this.addBookForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       author: new FormControl(null, [Validators.required]),
-      numberOfPages: new FormControl(null, [Validators.required]),
+      numberOfPages: new FormControl(null, [Validators.required, CustomValidators.numberOfPagesValidator]),
       isRead: new FormControl(null),
-      rating: new FormControl(null),
+      rating: new FormControl(null, [CustomValidators.ratingValidator, Validators.required])
     });
   }
 
@@ -52,6 +53,9 @@ export class AddBookComponent implements OnInit {
 
   handleOk(): void {
     const newBook: Book = this.addBookForm.value as Book;
+    if (newBook.isRead===false){
+      newBook.rating='?';
+    }
     this.booksService.addBook(newBook);
 
     this.addBookForm.reset();

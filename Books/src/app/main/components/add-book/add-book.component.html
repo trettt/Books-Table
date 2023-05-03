@@ -8,7 +8,7 @@
   <ng-container *nzModalContent>
     <form nz-form class="login-form" [formGroup]="addBookForm">
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your email!">
+        <nz-form-control>
           <nz-input-group>
             <input
               type="text"
@@ -17,28 +17,47 @@
               placeholder="Name"
             />
           </nz-input-group>
+
+          <div class="red-text" *ngIf="name?.errors?.['required']">
+            Please input a book!
+          </div>
+
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group>
+            <input
+              type="text"
+              nz-input
+              formControlName="author"
+              placeholder="Author"
+            />
+          </nz-input-group>
+
+          <div class="red-text" *ngIf="author?.errors?.['required']">
+            Please input an author!
+          </div>
+
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
         <nz-input-group>
-          <input
-            type="text"
-            nz-input
-            formControlName="author"
-            placeholder="Author"
-          />
-        </nz-input-group>
-      </nz-form-item>
+          <nz-form-control>
+            <input
+              type="number"
+              nz-input
+              formControlName="numberOfPages"
+              placeholder="Number of pages"
+            />
 
-      <nz-form-item>
-        <nz-input-group>
-          <input
-            type="number"
-            nz-input
-            formControlName="numberOfPages"
-            placeholder="Number of pages"
-          />
+            <div class="red-text" *ngIf="numberOfPages?.errors?.['tooFewPages']">
+              The number of the pages should be greater than 0!
+            </div>
+
+          </nz-form-control>
         </nz-input-group>
       </nz-form-item>
 
@@ -49,14 +68,20 @@
         </nz-input-group>
       </nz-form-item>
 
-      <nz-form-item *ngIf="isRead.value==true">
+      <nz-form-item *ngIf="isRead.value == true">
         <nz-input-group>
+          <nz-form-control>
           <input
             type="number"
             nz-input
             formControlName="rating"
             placeholder="Rating"
           />
+
+          <div class="red-text" *ngIf="rating?.errors?.['invalidRating']">
+            The rating can't be negative of greater than 5!
+          </div>
+        </nz-form-control>
         </nz-input-group>
       </nz-form-item>
     </form>

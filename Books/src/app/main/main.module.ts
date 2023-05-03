@@ -17,9 +17,10 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { RatingPipe } from './helpers/rating.pipe';
 
 @NgModule({
-  declarations: [DashboardComponent, TableComponent, HeaderComponent, AddBookComponent, EditBookComponent],
+  declarations: [DashboardComponent, TableComponent, HeaderComponent, AddBookComponent, EditBookComponent, RatingPipe],
   imports: [ReactiveFormsModule,CommonModule, MainRoutingModule, NzButtonModule, NzTableModule,NzIconModule,NzPageHeaderModule,NzModalModule, NzFormModule],
 })
 export class MainModule {}

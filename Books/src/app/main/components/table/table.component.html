@@ -32,7 +32,7 @@
           ></span>
         </td>
         <td>
-          {{ data.rating + " / 5" }}
+          {{ data.rating | rating }}
           <span nz-icon nzType="star" nzTheme="outline"></span>
         </td>
         <td>
@@ -43,18 +43,18 @@
             nzTheme="outline"
             (click)="editBook(data)"
           ></span>
-          <app-edit-book *ngIf="editVisible==true" [(editVisible)]="editVisible" [bookToEdit]="bookToEdit" ></app-edit-book>
         </td>
         <td>
           <span
-            class="delete-button"
-            nz-icon
-            nzType="delete"
-            nzTheme="outline"
-            (click)="deleteBook(data)"
+          class="delete-button"
+          nz-icon
+          nzType="delete"
+          nzTheme="outline"
+          (click)="deleteBook(data)"
           ></span>
         </td>
       </tr>
+      <app-edit-book *ngIf="editVisible==true" [(editVisible)]="editVisible" [bookToEdit]="bookToEdit" ></app-edit-book>
     </tbody>
   </nz-table>
 </div>
